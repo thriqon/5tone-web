@@ -1,0 +1,56 @@
+
+.alarmgeber {
+ padding-bottom: 2em;
+ padding-top: 2em;
+ border: 3px solid white;
+}
+
+.active {
+     border: 3px solid red;
+}
+
+.schleife {
+    width: 100%;
+    text-align: center;
+    
+    margin-bottom: 1em;
+}
+
+
+.schleife span {
+        font-family: "digital_dream", monospace;
+        font-size: 3.5em;
+}
+
+.schleife .bg {
+    color: gray;
+}
+
+.bedienfeld {
+    text-align: center;
+}
+
+.bedienfeld button {
+    margin: 0.2em;
+    
+    display: inline-block;
+    width: 3em;
+    height: 3em;
+    
+    font-size: 1.3em;
+}
+
+.alarm {
+    background-color: red;
+}
+
+button.alarm[disabled] {
+    background-color: #550000;
+}
+
+
+
+footer a:link, footer a:visited {
+    color: gray;
+}
+
