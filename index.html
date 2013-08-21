@@ -3,105 +3,21 @@
     
     <head>
         <meta charset="utf-8" />
-        <title>5-Ton-Folge Generator</title>
+        <title>5-Ton-Folgen Generator</title>
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0"
         />
-        <script src="app.js"></script>
         <script src="//code.jquery.com/jquery-1.10.1.min.js"></script>
-        <script type="text/javascript">
-            init();
-
-            $(function() {
-
-                var ddigitsSpans = $('.ddigit');
-                var alarmButton = $('.alarm');
-                var digitsButtons = $('.digit');
-                var loeschenButton = $('.loeschen');
-
-                var digits = [-1, - 1, - 1, - 1, - 1];
-
-                function refreshDigits() {
-                    ddigitsSpans.each(function(index) {
-
-                        if (digits[index] == -1) {
-                            $(this).text('-').addClass('bg');
-                        }
-                        else {
-                            $(this).text(digits[index]).removeClass('bg');
-                        }
-                    });
-
-                    // alle Digits gesetzt
-                    if (digits.indexOf(-1) == -1) {
-                        alarmButton.removeAttr('disabled');
-                        digitsButtons.attr('disabled', 'disabled');
-                        loeschenButton.removeAttr('disabled');
-
-                        // kein Digit gesetzt
-                    }
-                    else if (digits.indexOf(-1) == 0) {
-                        alarmButton.attr('disabled', 'disabled');
-                        digitsButtons.removeAttr('disabled');
-                        loeschenButton.attr('disabled', 'disabled');
-                    }
-                    else {
-                        // irgendwo zwischendrin, es gibt ungesetzte Digits, aber auch gesetzte
-                        alarmButton.attr('disabled', 'disabled');
-                        digitsButtons.removeAttr('disabled');
-                        loeschenButton.removeAttr('disabled');
-                    }
-                }
-
-                digitsButtons.click(function() {
-                    var index = digits.indexOf(-1);
-                    if (index == -1) {
-                        console.log('ouch');
-                        return;
-                    }
-
-                    digits[index] = parseInt($(this).text());
-
-                    refreshDigits();
-                });
-
-                alarmButton.click(function() {
-                    $('.alarmgeber').addClass('active');
-                    loeschenButton.attr('disabled', 'disabled');
-                    zveigen.alarm(digits, function() {
-                        $('.alarmgeber').removeClass('active');
-
-                        for (var i = 0; i < digits.length; i++) {
-                            digits[i] = -1;
-                        }
-                        refreshDigits();
-                    });
-                });
-
-                loeschenButton.click(function() {
-                    var indexP = digits.indexOf(-1);
-                    if (indexP == 0) {
-                        return;
-                    }
-                    if (indexP == -1) {
-                        indexP = digits.length;
-                    }
-
-                    var index = indexP - 1;
-
-                    digits[index] = -1;
-
-                    refreshDigits();
-                });
-
-                refreshDigits();
-            });
-        </script>
+        <script type="text/javascript" src="zvei.js"></script>
+        <script src="app.js"></script>
         <link rel="stylesheet" href="font.css" type="text/css" />
         <link rel="stylesheet" href="index.css" type="text/css" />
     </head>
     
-    <body>
-        <div class="alarmgeber">
+    <body class="nojs">
+        <div id="sorrymessage">I'm so sorry, this app really needs JavaScript and the WebAudioAPI to
+            function. Please use a compatible browser, like Google Chrome.</div>
+        <div
+        class="alarmgeber">
             <div class="schleife">
                 <span class="ddigit bg">0</span>
                 <span class="ddigit bg">0</span>
@@ -131,11 +47,12 @@
                     <button class="loeschen" disabled="disabled">L</button>
                 </div>
             </div>
-        </div>
-        <footer>
-            <a href="http://www.fontsquirrel.com/fonts/Digital-dream">Font by pizzaduke.dk</a><br />
-            <a href="http://github.com/thriqon">Code by thriqon</a>
-        </footer>
+            </div>
+            <footer>
+                <a href="http://www.fontsquirrel.com/fonts/Digital-dream">Font by pizzaduke.dk</a>
+                <br />
+                <a href="http://github.com/thriqon">Code by thriqon</a>
+            </footer>
     </body>
 
 </html>

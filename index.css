@@ -30,7 +30,7 @@
     text-align: center;
 }
 
-.bedienfeld button {
+button {
     margin: 0.2em;
     
     display: inline-block;
@@ -54,3 +54,24 @@ footer a:link, footer a:visited {
     color: gray;
 }
 
+#sorrymessage {
+    position: absolute;
+    width: 80%;
+    top: 20%;
+    border: 1px solid red;
+    background-color: white;
+    left: 10%;
+    padding: 3em;
+    
+    display: none;
+    
+    font-weight:bold;
+}
+
+.nojs #sorrymessage {
+    display: block;
+}
+
+.nojs .alarmgeber {
+    opacity: 0.1;
+}
