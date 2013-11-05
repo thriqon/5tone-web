@@ -1,6 +1,6 @@
 
 function ZVEIPlayer() {
-    var context = window.AudioContext || window.webkitAudioContex;
+    var context = window.AudioContext || window.webkitAudioContext;
     this.context = new context();
 }
 
