@@ -1,6 +1,7 @@
 
 function ZVEIPlayer() {
-    this.context = new webkitAudioContext();
+    var context = window.AudioContext || window.webkitAudioContex;
+    this.context = new context();
 }
 
 function toZveiFrequencies(digits) {
