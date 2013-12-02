@@ -52,10 +52,12 @@ button.alarm[disabled] {
 
 footer a:link, footer a:visited {
     color: gray;
+    text-decoration: none;
 }
 
 #sorrymessage {
     position: absolute;
+    box-sizing: border-box;
     width: 80%;
     top: 20%;
     border: 1px solid red;
